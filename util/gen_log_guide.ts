@@ -2,10 +2,11 @@ import path from 'path';
 
 import markdownMagic from 'markdown-magic';
 
-import logDefinitions, { LogDefinitionTypes } from '../resources/netlog_defs';
+import logDefinitions from '../resources/netlog_defs';
 import NetRegexes, { buildRegex as buildNetRegex } from '../resources/netregexes';
 import { UnreachableCode } from '../resources/not_reached';
 import Regexes, { buildRegex } from '../resources/regexes';
+import { LogDefinitionTypes } from '../types/net_fields';
 import LogRepository from '../ui/raidboss/emulator/data/network_log_converter/LogRepository';
 import ParseLine from '../ui/raidboss/emulator/data/network_log_converter/ParseLine';
 

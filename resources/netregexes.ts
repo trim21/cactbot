@@ -1,13 +1,13 @@
-import { NetFieldsReverse } from '../types/net_fields';
+import {
+  LogDefinitionTypes,
+  LogDefinitionVersions,
+  NetFieldsReverse,
+  ParseHelperFields,
+} from '../types/net_fields';
 import { NetParams } from '../types/net_props';
 import { CactbotBaseRegExp } from '../types/net_trigger';
 
-import {
-  logDefinitionsVersions,
-  LogDefinitionTypes,
-  LogDefinitionVersions,
-  ParseHelperFields,
-} from './netlog_defs';
+import { logDefinitionsVersions } from './netlog_defs';
 import Regexes from './regexes';
 
 const separator = '\\|';

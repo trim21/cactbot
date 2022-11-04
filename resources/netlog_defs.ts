@@ -1,5 +1,3 @@
-import { NetFieldsReverse } from '../types/net_fields';
-
 export type LogDefinition = {
   // The log id, as a decimal string, minimum two characters.
   type: string;
@@ -39,6 +37,7 @@ export type LogDefinition = {
 export type LogDefinitionMap = { [name: string]: LogDefinition };
 type LogDefinitionVersionMap = { [version: string]: LogDefinitionMap };
 
+// run util/gen_log_type.ts after you change this.
 const latestLogDefinitions = {
   GameLog: {
     type: '00',
@@ -999,23 +998,5 @@ export const logDefinitionsVersions = {
 // Verify that this has the right type, but export `as const`.
 const assertLogDefinitions: LogDefinitionVersionMap = logDefinitionsVersions;
 console.assert(assertLogDefinitions);
-
-export type LogDefinitions = typeof logDefinitionsVersions['latest'];
-export type LogDefinitionTypes = keyof LogDefinitions;
-export type LogDefinitionVersions = keyof typeof logDefinitionsVersions;
-
-export type ParseHelperField<
-  Type extends LogDefinitionTypes,
-  Fields extends NetFieldsReverse[Type],
-  Field extends keyof Fields,
-> = {
-  field: Fields[Field] extends string ? Fields[Field] : never;
-  value?: string;
-  optional?: boolean;
-};
-
-export type ParseHelperFields<T extends LogDefinitionTypes> = {
-  [field in keyof NetFieldsReverse[T]]: ParseHelperField<T, NetFieldsReverse[T], field>;
-};
 
 export default logDefinitionsVersions['latest'];
